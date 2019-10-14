@@ -1,4 +1,4 @@
-var uri = "http://data.goteborg.se/BridgeService/v1.0/GetGABOpenedStatus/1bc2ce27-c0b7-4a92-bd36-86be16e1b084/2019-01-01/2019-01-31?format=json";
+var uri = "http://data.goteborg.se/BridgeService/v1.0/GetGABOpenedStatus/DIN-API-KEY/2019-01-01/2019-01-31?format=json";
 var data;
 var tbody;
 
