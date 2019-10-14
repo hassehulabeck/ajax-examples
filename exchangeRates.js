@@ -1,23 +1,18 @@
 var xhr = new XMLHttpRequest;
-var users;
 var lista = document.getElementsByTagName("ul");
+var exchangeRates;
 
 xhr.onreadystatechange = function () {
 
     if ((xhr.readyState == 4) && (xhr.status == 200)) {
-        users = xhr.response;
+        exchangeRates = xhr.response;
 
-        // Loopa igenom responsen, dvs våra users.
-        users.forEach(user => {
+        // Loopa igenom responsens rates.
+        for (egenskap in exchangeRates.rates) {
             let li = document.createElement("li");
-            li.innerHTML = `
-                <td>${user.name}</td>
-                <td>${user.email}</td>
-                <td>${user.address.city}</td>
-                <td>${user.company.name}</td>
-            `;
+            li.innerHTML = egenskap + ": " + exchangeRates.rates[egenskap];
             lista[0].appendChild(li);
-        });
+        }
     }
 
 }
