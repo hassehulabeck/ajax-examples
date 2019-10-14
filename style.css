@@ -1,0 +1,20 @@
+table {
+    border-collapse: collapse;
+}
+
+th,
+td {
+    font: 1em/1.25em "verdana";
+}
+
+thead {
+    background: orange;
+}
+
+th {
+    text-align: left;
+}
+
+tr:nth-child(even) {
+    background-color: wheat;
+}
