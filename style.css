@@ -1,20 +1,26 @@
-table {
-    border-collapse: collapse;
+#question {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 1.3em;
 }
 
-th,
-td {
-    font: 1em/1.25em "verdana";
+button {
+    display: block;
+    margin: 1em;
+    padding: 4px;
+    background: #22a;
+    color: white;
+    font-weight: 700;
+    font-size: 1.5em;
+    border-radius: 6px;
+    min-width: 20em;
+    text-align: center;
 }
 
-thead {
-    background: orange;
+button:hover {
+    background-color: navy;
 }
 
-th {
-    text-align: left;
-}
-
-tr:nth-child(even) {
-    background-color: wheat;
+.correct,
+.correct:hover {
+    background: green;
 }
