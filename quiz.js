@@ -61,6 +61,6 @@
                 e.target.classList.add("correct");
             }
             questionNumber++;
-            setTimeout(render, 1000);
+            setTimeout(render, 1300);
         })
     })
