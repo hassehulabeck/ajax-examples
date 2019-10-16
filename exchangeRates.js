@@ -1,4 +1,7 @@
 var xhr = new XMLHttpRequest;
+var exchangeRates;
+
+// Dela upp url:en i en fast del (url) och en dynamisk (base)
 var url = "https://api.exchangeratesapi.io/latest?base=";
 var base = "SEK";
 
@@ -7,9 +10,12 @@ document.addEventListener("DOMContentLoaded", function () {
     var select = document.getElementById("valuta");
 
     function populateSelect() {
+        // Gå igenom objektet rates, en valuta(rate) i taget.
         for (rate in exchangeRates.rates) {
             var option = document.createElement("option");
+            // Lägg in valutan som value i optionen.
             option.value = rate;
+            // Lägg också in den som text innanför elementets taggar.
             option.innerText = rate;
             select.appendChild(option);
         }
@@ -33,13 +39,12 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     select.addEventListener("change", function (e) {
-        var valuta = e;
-        console.log(valuta.target.value);
-        base = valuta.target.value;
+        // Tilldela base värdet av den option i dropdownen vi valt.
+        base = e.target.value;
+        // Anropa url för att få fräsch data.
         getData();
     })
 })
-var exchangeRates;
 
 function getData() {
     xhr.open("GET", url + base);
@@ -47,4 +52,5 @@ function getData() {
     xhr.send();
 }
 
+// Börja med att anropa url för att få data.
 getData();
