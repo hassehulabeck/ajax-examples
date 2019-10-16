@@ -1,6 +1,7 @@
     var url = "https://opentdb.com/api.php?amount=3&category=14&difficulty=medium&type=multiple";
     let questions;
     let correct_answer;
+    var questionNumber = 0;
 
     document.addEventListener("DOMContentLoaded", function () {
 
@@ -29,18 +30,20 @@
         }
 
         function render() {
+            questionArea.innerHTML = "";
+            answersArea.innerHTML = "";
 
             // Skriv ut första frågan.
-            questionArea.innerHTML = questions[0].question;
+            questionArea.innerHTML = questions[questionNumber].question;
 
             // Skapa knappar för svarsalternativen
-            let answers = [questions[0].correct_answer, ...questions[0].incorrect_answers];
+            let answers = [questions[questionNumber].correct_answer, ...questions[questionNumber].incorrect_answers];
 
             // Blanda svaren.
             shuffle(answers);
 
             // Få index för det rätta svaret.
-            correct_answer = answers.indexOf(questions[0].correct_answer);
+            correct_answer = answers.indexOf(questions[questionNumber].correct_answer);
 
             answers.forEach(function (answer, index) {
                 let button = document.createElement("button");
@@ -57,5 +60,7 @@
                 console.log("Correct");
                 e.target.classList.add("correct");
             }
+            questionNumber++;
+            setTimeout(render, 1000);
         })
     })
