@@ -34,10 +34,33 @@ document.addEventListener("DOMContentLoaded", function () {
         console.log("Din enhet tillåter inte platstjänster.")
     }
 
-    function renderSunset() {
-        sunsetSunrise.innerHTML = `
-        <p>Solen går upp: ${sunsetRes.results.sunrise}</p>
-        <p>Solen går ned: ${sunsetRes.results.sunset}</p>
-        `;
-    }
 })
+
+function renderSunset() {
+    fixTime();
+    // Skriv ut resultatet enligt det format vi har i Sverige
+    sunsetSunrise.innerHTML = `
+        <p>Solen går upp: ${sunsetRes.results.sunrise.toLocaleTimeString("SV-se")}</p>
+        <p>Solen går ned: ${sunsetRes.results.sunset.toLocaleTimeString("SV-se")}</p>
+        `;
+}
+
+function fixTime() {
+    // Skapa ett nytt datumobjekt, med dagens datum.
+    var idag = new Date();
+    // Omvandla detta till strängvärde för datument, exempelvis "2019-10-17"
+    idag = idag.toDateString();
+
+    // Plocka ut klockslaget.
+    var tid = sunsetRes.results.sunrise;
+
+    // Omvandla UTC-tiden till vår lokala tid med sommartid och annat.
+    sunsetRes.results.sunrise = new Date(idag + " " + tid + " UTC");
+    console.log(sunsetRes.results.sunrise);
+
+    var tid = sunsetRes.results.sunset;
+
+    // Omvandla UTC-tiden till vår lokala tid med sommartid och annat.
+    sunsetRes.results.sunset = new Date(idag + " " + tid + " UTC");
+    console.log(sunsetRes.results.sunset);
+}
