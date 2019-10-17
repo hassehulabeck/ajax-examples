@@ -5,6 +5,7 @@ table {
 th,
 td {
     font: 1em/1.25em "verdana";
+    padding: 3px 1em;
 }
 
 thead {
